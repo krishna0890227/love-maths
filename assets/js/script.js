@@ -16,9 +16,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 })
 
+/** The main function is loaded and 
+ * it call to runGame that generate two random numbers  */
+
 function runGame() {
+    num1=Math.floor(Math.random()*25) +1;
+    num2= Math.floor(Math.random()*25) + 1;
 
 }
+
+
 
 function checkAnswer() {
 
