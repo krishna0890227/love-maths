@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type")==="submit") {
-                alert("You clicked submit button!")
+                // alert("You clicked submit button!")
                 checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
@@ -28,7 +28,7 @@ function runGame(gameType) {
     if(gameType==="addition") {
         displayAdditionQuestion(num1, num2);
     } else {
-        alert("You selected wrong game question");
+        // alert("You selected wrong game question");
         throw `unknown game type ${gameType}! Game is Aborting`;
     }
 
@@ -42,10 +42,12 @@ function checkAnswer() {
    let correctAnswer=calculateCorrectAnswer();
    iscorrect = useranswer === correctAnswer[0]
    if(iscorrect) {
-    alert(`Yes you got write answer ${correctAnswer[0]} :D`)
+    alert(`Yes you got write answer ${correctAnswer[0]} :D`);
+    incrementScore()
 
    } else {
     alert(`Oops! Your answer is ${useranswer}!. But the right answer is ${correctAnswer[0]}`);
+    incrementWrongAnswer()
    }
    runGame(calculateCorrectAnswer[1]);
 }
@@ -65,10 +67,14 @@ function calculateCorrectAnswer() {
 }
 
 function incrementScore() {
+    let correctAnswers= document.getElementById("correct").innerText;
+    document.getElementById("correct").innerText= ++correctAnswers;
 
 }
 
 function incrementWrongAnswer() {
+    let wrongAnswers= document.getElementById("incorrect").innerText;
+    document.getElementById("incorrect").innerText= ++wrongAnswers;
 
 }
 
