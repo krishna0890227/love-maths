@@ -28,8 +28,9 @@ function runGame(gameType) {
     if(gameType==="addition") {
         displayAdditionQuestion(num1, num2);
     } else if (gameType==="multiply") {
-        console.log("multiply game is working!")
         displayMultiplicationQuestion(num1, num2);
+    } else if (gameType==="subtract") {
+        displaySubstractQuestion(num1, num2);
     }
     
     else {
@@ -67,7 +68,11 @@ function calculateCorrectAnswer() {
     } else if (operator === "x") {
         console.log("I am returning operator");
         return([operand1 * operand2, "multiply"])
-    } 
+    }  else if (operator === "-") {
+            return([operand1-operand2, "subtract"])
+
+        }
+
     else {
         alert("You selected wrong game question");
         throw `unknown game type ${operator}! Game is Aborting`;
@@ -103,6 +108,10 @@ function displayMultiplicationQuestion(operand1, operand2) {
 
 }
 
-function displaySubstractQuestion() {
+function displaySubstractQuestion(operand1, operand2) {
+    
+    document.getElementById("operand1").textContent= operand1 > operand2 ? operand1: operand2
+    document.getElementById("operand2").textContent= operand1 > operand2 ? operand2: operand1
+    document.getElementById("operator").textContent = "-";
 
 }
